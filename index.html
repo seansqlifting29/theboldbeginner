@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheBoldBeginner.com | Sean Tyndale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --navy: #0a192f;
+            --royal: #112240;
+            --accent: #64ffda;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+            --card-bg: rgba(17, 34, 64, 0.4);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .back-link {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        /* Hero - Three Devices */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--black) 100%);
+            position: relative;
+        }
+
+        .hero-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .framer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            color: var(--slate);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .site-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .site-link:hover {
+            color: var(--accent);
+        }
+
+        .site-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Device Showcase - Three Columns */
+        .devices-showcase {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 3rem;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 4rem;
+        }
+
+        /* Desktop */
+        .device-desktop {
+            width: 600px;
+            height: 380px;
+            background: var(--black);
+            border-radius: 12px;
+            padding: 12px 12px 24px 12px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.8),
+                0 0 0 1px var(--royal);
+            position: relative;
+        }
+
+        .device-desktop-top {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 8px;
+            background: var(--royal);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .device-desktop-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--royal);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Tablet */
+        .device-tablet {
+            width: 280px;
+            height: 380px;
+            background: var(--black);
+            border-radius: 16px;
+            padding: 10px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.8),
+                0 0 0 1px var(--royal);
+            position: relative;
+        }
+
+        .device-tablet-camera {
+            position: absolute;
+            top: 50%;
+            left: 6px;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--slate);
+            border-radius: 50%;
+        }
+
+        .device-tablet-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--royal);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Phone */
+        .device-phone {
+            width: 180px;
+            height: 360px;
+            background: var(--black);
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.8),
+                0 0 0 1px var(--royal);
+            position: relative;
+        }
+
+        .device-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: var(--black);
+            border-radius: 10px;
+            z-index: 3;
+        }
+
+        .device-phone-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--royal);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .device-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Device Labels */
+        .device-label {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            color: var(--slate);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Details Section - Pad Style */
+        .details {
+            padding: 0 5% 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .detail-pad {
+            background: var(--card-bg);
+            border: 1px solid var(--royal);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .detail-pad:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            background: rgba(17, 34, 64, 0.6);
+        }
+
+        .detail-pad h3 {
+            color: var(--accent);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .detail-pad ul {
+            list-style: none;
+        }
+
+        .detail-pad li {
+            color: var(--slate);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .detail-pad li:before {
+            content: "—";
+            color: var(--accent);
+            font-weight: 300;
+            flex-shrink: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .devices-showcase {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .device-desktop {
+                width: 100%;
+                max-width: 600px;
+                height: 350px;
+            }
+
+            .device-tablet {
+                width: 100%;
+                max-width: 400px;
+                height: 300px;
+            }
+
+            .device-phone {
+                width: 200px;
+                height: 400px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .device-desktop {
+                height: 250px;
+            }
+
+            .device-tablet {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Sean<span>.</span>Tyndale</a>
+        <a href="#" class="back-link">← Back</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-header">
+            <div class="framer-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4 0h16v8h-8zm0 8h8l8 8H4zm0 8h8v8z"/>
+                </svg>
+                Framer
+            </div>
+            <h1>TheBoldBeginner</h1>
+            <p class="hero-subtitle">Figma-to-Framer development with CMS integration and marketing automation.</p>
+            <a href="https://theboldbeginner.com" target="_blank" class="site-link">
+                Visit Site
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="devices-showcase">
+            <div class="device-group">
+                <div class="device-desktop">
+                    <div class="device-desktop-top"></div>
+                    <div class="device-desktop-inner device-inner">
+                        <img src="images/desktop.jpg" alt="Desktop Version">
+                    </div>
+                </div>
+                <div class="device-label">Desktop</div>
+            </div>
+
+            <div class="device-group">
+                <div class="device-tablet">
+                    <div class="device-tablet-camera"></div>
+                    <div class="device-tablet-inner device-inner">
+                        <img src="images/tablet.jpg" alt="Tablet Version">
+                    </div>
+                </div>
+                <div class="device-label">Tablet</div>
+            </div>
+
+            <div class="device-group">
+                <div class="device-phone">
+                    <div class="device-notch"></div>
+                    <div class="device-phone-inner device-inner">
+                        <img src="images/mobile.jpg" alt="Mobile Version">
+                    </div>
+                </div>
+                <div class="device-label">Mobile</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details">
+        <div class="details-grid">
+            <div class="detail-pad">
+                <h3>Implementation</h3>
+                <ul>
+                    <li>Figma design translation</li>
+                    <li>Responsive breakpoint system</li>
+                    <li>Dynamic header/footer components</li>
+                    <li>Newsletter section design</li>
+                </ul>
+            </div>
+
+            <div class="detail-pad">
+                <h3>CMS</h3>
+                <ul>
+                    <li>Podcasts collection</li>
+                    <li>YouTube videos library</li>
+                    <li>Blog posts structure</li>
+                    <li>Dynamic templates</li>
+                </ul>
+            </div>
+
+            <div class="detail-pad">
+                <h3>Integrations</h3>
+                <ul>
+                    <li>Mailchimp form sync</li>
+                    <li>Systeme.io automation</li>
+                    <li>Email list workflows</li>
+                    <li>Lead capture setup</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
